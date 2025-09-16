@@ -1,0 +1,34 @@
+{
+  "name": "authentication-guide",
+  "version": "1.0.0",
+  "description": "A complete guide to authentication in Node.js. This repository covers multiple authentication methods including sessions, cookies, JWT, OAuth, Passport.js, social logins (Google, GitHub, Facebook), and more. Each method is explained with code examples and best practices for building secure Node.js applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajayitengineer/node-authentication-guide.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ajayitengineer/node-authentication-guide/issues"
+  },
+  "homepage": "https://github.com/ajayitengineer/node-authentication-guide#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.5",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
+  }
+}
