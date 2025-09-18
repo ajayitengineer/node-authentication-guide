@@ -26,10 +26,11 @@
     "secure-api",
     "jsonwebtoken",
     "auth-system",
-    "jwt-auth"
+    "jwt-auth",
+    "jwt-interview-question"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/ajayitengineer/node-authentication-guide/issues"

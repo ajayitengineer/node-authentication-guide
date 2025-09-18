@@ -260,7 +260,9 @@ Authorization: Bearer <your_access_token>
 
 ```bash
 jwt-auth-node-express/
+│── services          # Services for controllers (auth, user etc.)
 │── controllers/      # Route controllers (auth, user, etc.)
+│── errors/           # For custom errors and validation
 │── middlewares/      # Auth & role-based middleware
 │── models/           # Database models (User, Token, etc.)
 │── routes/           # API routes (auth.js, user.js, etc.)
@@ -284,5 +286,3 @@ jwt-auth-node-express/
 ⚡ With these steps, you can set up JWT authentication with **Access Tokens, Refresh Tokens, and Role-Based Access Control** in Node.js + Express.
 
 ---
-
-Would you like me to also add a **ready-to-use API test collection (Postman/Thunder Client JSON)** so users can import and test endpoints instantly?
