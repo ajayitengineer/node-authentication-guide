@@ -1,3 +1,7 @@
+# 🔐 JWT Authentication in Node.js & Express
+
+A complete guide and implementation of **JWT-based authentication** in Node.js + Express, covering **Access Tokens, Refresh Tokens, and Role-Based Access Control (RBAC)** with best practices.
+
 # 🔑 JSON Web Token (JWT) Notes
 
 ## Q: What is JWT?
@@ -179,3 +183,106 @@ A:
 👉 **Protect against CSRF** – If using cookies, add CSRF tokens or use `SameSite=strict` / `lax` cookie flags.
 
 ---
+
+Perfect 🚀 — here’s a **complete step-by-step guide** you can paste into your `README.md` so anyone can run your project easily.
+
+---
+
+## 📖 How to Use This Repository
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/jwt-auth-node-express.git
+cd jwt-auth-node-express
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Configure Environment Variables
+
+Create a `.env` file in the project root with the following:
+
+```env
+PORT=5000
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=15m          # Access Token expiry
+JWT_REFRESH_EXPIRES_IN=7d   # Refresh Token expiry
+```
+
+### 4️⃣ Start the Server
+
+```bash
+npm start
+```
+
+or for development with auto-restart (if you use nodemon):
+
+```bash
+npm run dev
+```
+
+### 5️⃣ Available API Endpoints
+
+#### 🔹 Auth Routes
+
+- **POST** `/api/auth/signup` → Register a new user
+- **POST** `/api/auth/login` → Login with email & password (returns Access + Refresh token)
+- **POST** `/api/auth/refresh` → Get a new access token using refresh token
+- **POST** `/api/auth/logout` → (Optional) Invalidate refresh token
+
+#### 🔹 Protected Routes
+
+- **GET** `/api/protected` → Example protected route (requires valid JWT Access Token)
+- **GET** `/api/admin` → Example admin-only route (requires JWT + role = admin)
+
+### 6️⃣ Sending Requests with JWT
+
+Use the `Authorization` header in requests to protected routes:
+
+```http
+Authorization: Bearer <your_access_token>
+```
+
+### 7️⃣ Example Usage Flow
+
+👉 User signs up → logs in → receives **Access Token + Refresh Token**.
+👉 User calls protected APIs with Access Token in headers.
+👉 When Access Token expires → user calls `/refresh` with Refresh Token.
+👉 Server verifies Refresh Token and issues a new Access Token.
+👉 If Refresh Token also expires → user must log in again.
+
+### 8️⃣ Folder Structure (Example)
+
+```bash
+jwt-auth-node-express/
+│── controllers/      # Route controllers (auth, user, etc.)
+│── middlewares/      # Auth & role-based middleware
+│── models/           # Database models (User, Token, etc.)
+│── routes/           # API routes (auth.js, user.js, etc.)
+│── config/           # JWT/DB config
+│── server.js         # Entry point
+│── package.json
+│── .env
+```
+
+### 9️⃣ Tech Stack
+
+- **Node.js** – Runtime
+- **Express.js** – Web framework
+- **jsonwebtoken** – JWT handling
+- **bcrypt** – Password hashing
+- **dotenv** – Environment variables
+- (Optional: Sequelize/Mongoose if using DB)
+
+---
+
+⚡ With these steps, you can set up JWT authentication with **Access Tokens, Refresh Tokens, and Role-Based Access Control** in Node.js + Express.
+
+---
+
+Would you like me to also add a **ready-to-use API test collection (Postman/Thunder Client JSON)** so users can import and test endpoints instantly?
