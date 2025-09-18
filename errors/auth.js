@@ -30,4 +30,16 @@ class InvalidPassword extends AuthError {
   }
 }
 
-module.exports = { Emailexist, Servererror, InvalidEmail, InvalidPassword };
+class UnAuthorized extends AuthError {
+  constructor() {
+    super("Not authorized", 403);
+  }
+}
+
+module.exports = {
+  Emailexist,
+  Servererror,
+  InvalidEmail,
+  InvalidPassword,
+  UnAuthorized,
+};

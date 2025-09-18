@@ -17,6 +17,7 @@ const config = {
     jwtkey: process.env.JWT_AUTH_KEY,
     expiry: process.env.JWT_EXPIRY,
     refreshExpiry: process.env.JWT_REFRESH_EXPIRY,
+    refreshjwtkey: process.env.JWT_REFRESH_AUTH_KEY,
   },
 };
 

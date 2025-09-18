@@ -10,7 +10,7 @@ const {
 } = require("../errors/auth");
 
 const authService = {
-  signUp: async ({ firstName, lastName, email, password }) => {
+  signUp: async ({ firstName, lastName, email, password, role }) => {
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       throw new Emailexist();
@@ -21,6 +21,7 @@ const authService = {
       lastName,
       email,
       password: hashPassword,
+      role,
     });
     if (!user) throw new Servererror();
     return user;
@@ -36,17 +37,28 @@ const authService = {
       if (!isPassword) {
         throw new InvalidPassword();
       } else {
-        const token = jwt.sign({ id: user.id }, config.auth.jwtkey, {
-          expiresIn: config.auth.expiry,
-        });
-        const refreshToken = jwt.sign(
-          { id: user.id },
-          config.auth.refreshExpiry,
+        const access_token = jwt.sign(
+          { id: user.id, role: user.role },
+          config.auth.jwtkey,
+          {
+            expiresIn: config.auth.expiry,
+          }
+        );
+        const refresh_token = jwt.sign(
+          { id: user.id, role: user.role },
+          config.auth.refreshjwtkey,
           {
             expiresIn: config.auth.refreshExpiry,
           }
         );
-        return { token: token, expiry: config.auth.expiry, refreshToken };
+        const access_token_decode = jwt.decode(access_token);
+        const refresh_token_decode = jwt.decode(refresh_token);
+        return {
+          access_token: access_token,
+          access_token_data: access_token_decode,
+          refresh_token: refresh_token,
+          refresh_token_data: refresh_token_decode,
+        };
       }
     }
   },
@@ -56,7 +68,9 @@ const authService = {
       attributes: { exclude: ["password"] },
       raw: true,
     });
-    console.log("user data", user);
+  },
+  admin: async () => {
+    return "admin route can be access by this token";
   },
 };
 
