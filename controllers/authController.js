@@ -33,6 +33,14 @@ const authController = {
       }
     }
   },
+  profile: async (req, res) => {
+    try {
+      let user = await authService.profile(req.id);
+      res.status(200).json({ user });
+    } catch (err) {
+      res.status(500).json({ message: "error" });
+    }
+  },
 };
 
 module.exports = authController;

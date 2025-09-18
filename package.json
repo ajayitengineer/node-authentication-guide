@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/ajayitengineer/node-authentication-guide.git"
   },
-  "keywords": [],
+  "keywords": [
+    "JWT",
+    "Authentication"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",

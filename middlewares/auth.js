@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+const config = require("../config");
+
 const signupValidation = (req, res, next) => {
   console.log("middle ware");
   const { firstName, lastName, email, password } = req.body;
@@ -17,4 +20,16 @@ const signinValidation = (req, res, next) => {
   }
 };
 
-module.exports = { signupValidation, signinValidation };
+const tokenValidation = (req, res, next) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const jwtSecret = config.auth.jwtkey;
+  try {
+    const isToken = jwt.verify(token, jwtSecret);
+    req.id = isToken.id;
+    next();
+  } catch (err) {
+    res.status(401).json({ message: "token expired" });
+  }
+};
+
+module.exports = { signupValidation, signinValidation, tokenValidation };

@@ -50,6 +50,14 @@ const authService = {
       }
     }
   },
+  profile: async (id) => {
+    const user = await User.findOne({
+      where: { id },
+      attributes: { exclude: ["password"] },
+      raw: true,
+    });
+    console.log("user data", user);
+  },
 };
 
 module.exports = authService;
