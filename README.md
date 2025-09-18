@@ -109,3 +109,73 @@ const refreshToken = jwt.sign({ id: user.id }, process.env.JWT_REFRESH_SECRET, {
 ```
 
 ---
+
+Perfect 🚀 — here’s a polished **FAQ section** you can paste directly into your README.md. I kept the **copyable bold dot (•)** for consistency with your previous style.
+
+---
+
+## 🔐 JWT FAQ
+
+**• Q: What is refresh token and how we use it?**
+A: Refresh token is same token as access token but it has expiry time more than normal token. We use it to get a new token without going through the login process again.
+
+**• Q: What happens if refresh token expired?**
+A: If refresh token expired, then no way to access the API. The client has to login again.
+
+**• Q: What happens if we don’t mention expiry time in token?**
+A: The default expiry time of JWT token is never expired.
+
+**• Q: What is the difference between access token and refresh token?**
+A: Access tokens are short-lived and used to access APIs. Refresh tokens are long-lived and used to get new access tokens when the old one expires.
+
+**• Q: Where should I store JWT in frontend?**
+A: Preferably in `httpOnly` cookies for security. Storing in `localStorage` or `sessionStorage` is possible but more vulnerable to XSS attacks.
+
+**• Q: Can JWT be revoked?**
+A: JWTs are stateless, so once issued they cannot be revoked unless you keep a blacklist or use short expiration times with refresh tokens.
+
+**• Q: Is JWT secure?**
+A: JWT is secure if you use a strong secret/private key, HTTPS, short expiration times, and don’t store sensitive data inside the payload.
+
+**• Q: What is the difference between JWT and sessions?**
+A: Sessions store data on the server (stateful), while JWT stores claims in the token itself (stateless).
+
+**• Q: What are JWT `aud`, `iss`, `sub`, `exp` claims?**
+A: These are registered claims:
+
+- `iss`: issuer (who issued the token)
+- `sub`: subject (whom the token refers to)
+- `aud`: audience (intended recipient)
+- `exp`: expiration time
+
+---
+
+Got it 👍 Here’s the **Best Practices** section in the same **Q\&A + 👉 bullet style** as your previous notes, so you can directly paste into your `README.md`:
+
+---
+
+### Q: What are some best practices when using JWT?
+
+A:
+
+👉 **Use short-lived access tokens** – Keep access tokens valid only for a few minutes (e.g., 15 mins) to reduce risk if stolen.
+
+👉 **Use refresh tokens securely** – Keep refresh tokens long-lived but store them securely (preferably in `httpOnly` cookies). Rotate them frequently.
+
+👉 **Always use HTTPS** – Never send JWTs over plain HTTP. Use HTTPS to protect against man-in-the-middle attacks.
+
+👉 **Store tokens in `httpOnly` cookies** – This protects against XSS attacks. Avoid localStorage if possible.
+
+👉 **Do not store sensitive data in JWT payload** – Payload is Base64Url encoded (not encrypted). Anyone can decode it, so only store minimal info (e.g., `id`, `role`).
+
+👉 **Validate token signature and claims** – Always check signature, issuer (`iss`), audience (`aud`), and expiration (`exp`) before trusting a token.
+
+👉 **Revoke tokens when needed** – JWTs are stateless, so implement blacklists/whitelists or use short expirations + refresh tokens to handle revocation.
+
+👉 **Rotate signing keys** – Use key rotation strategies (like JWKS). Don’t keep the same secret forever.
+
+👉 **Handle token expiry properly** – When access token expires, issue a new one using the refresh token. If refresh token also expires, force login again.
+
+👉 **Protect against CSRF** – If using cookies, add CSRF tokens or use `SameSite=strict` / `lax` cookie flags.
+
+---
