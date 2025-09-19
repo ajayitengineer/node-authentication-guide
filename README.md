@@ -112,12 +112,6 @@ const refreshToken = jwt.sign({ id: user.id }, process.env.JWT_REFRESH_SECRET, {
 });
 ```
 
----
-
-Perfect 🚀 — here’s a polished **FAQ section** you can paste directly into your README.md. I kept the **copyable bold dot (•)** for consistency with your previous style.
-
----
-
 ## 🔐 JWT FAQ
 
 **• Q: What is refresh token and how we use it?**
@@ -152,12 +146,6 @@ A: These are registered claims:
 - `aud`: audience (intended recipient)
 - `exp`: expiration time
 
----
-
-Got it 👍 Here’s the **Best Practices** section in the same **Q\&A + 👉 bullet style** as your previous notes, so you can directly paste into your `README.md`:
-
----
-
 ### Q: What are some best practices when using JWT?
 
 A:
@@ -181,12 +169,6 @@ A:
 👉 **Handle token expiry properly** – When access token expires, issue a new one using the refresh token. If refresh token also expires, force login again.
 
 👉 **Protect against CSRF** – If using cookies, add CSRF tokens or use `SameSite=strict` / `lax` cookie flags.
-
----
-
-Perfect 🚀 — here’s a **complete step-by-step guide** you can paste into your `README.md` so anyone can run your project easily.
-
----
 
 ## 📖 How to Use This Repository
 
